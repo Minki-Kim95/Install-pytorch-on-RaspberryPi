@@ -82,8 +82,9 @@ sudo apt-get install libatomics-ops-dev
 Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). 
 i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
 ```
-But that is not enough. When you run pytorch code after installing, 
-you might meet undefined reference to `__atomic_fetch_add_8' when it tries to backward. 
+But that is not enough. 
+When you run pytorch code after installing, 
+you might meet error (undefined reference to `__atomic_fetch_add_8') when it tries to backward
 
 So, we also need to do this process before building. 
 ```
@@ -101,9 +102,10 @@ export NO_NNPACK=1
 export NO_QNNPACK=1
 ```
 ### 5.1 Build caffe2: 
-If you build pytorch without building caffe2 there will be 
-Failed to run 'bash tools/build_pytorch_libs.sh caffe2'
-So you need to build caffe2 before.
+If you build pytorch without building caffe2 
+there will be Failed to run 'bash tools/build_pytorch_libs.sh caffe2'
+So you need to build caffe2 before build pytorch.
+
 ```
 cd pytorch
 sudo git submodule update –init
@@ -113,6 +115,7 @@ sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/bu
 
 ### 5.2 Compile Pytorch: 
 Now start building and cross your fingers, hoping no errors arise. This process may be quite lengthy: in my case, I let it run overnight and manually installed a few missing packages that could not be automatically downloaded and compiled by the pytorch installer.
+
 ```
 sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py build
 (-> ‘BUILD_TEST=0’ makes building more faster) 
@@ -126,10 +129,13 @@ If the compilation process stops halfway because of an error, your progresses is
 
 ### 6. Install Pytorch: 
 The installation should be much quicker than the compilation process (it took about 5 minutes on my Raspberry PI). To install Pytorch, just run:
+
 ```
 sudo -E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
 ```
+
 If the installation completed successfully, let’s try importing Pytorch in python3. Do not run the following commands while you’re in Pytorch's installation directory, as that’s likely to yield import errors. To test your installation:
+
 ```
 cd 
 python3
@@ -153,6 +159,9 @@ Whenever I meet SSL error, I used this command and it works almost for ‘pip in
 * [Build Caffe2](https://caffe2.ai/docs/getting-started.html?platform=raspbian&configuration=compile)
 * how to resolve error message
 undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build/lib/libcaffe2.so: undefined reference to __atomic_load_8'
+
 [Issues in pytorch repository](https://github.com/pytorch/pytorch/issues/22898)
+
 * how to resolve ‘undefined reference to `__atomic_fetch_add_8' after install
+
 [Issues in pytorch repository](https://github.com/pytorch/pytorch/issues/22564)
