@@ -5,22 +5,22 @@ This description is upgrade version of [this manual](https://blog.openmined.org/
 https://github.com/pytorch/pytorch/issues/26455
 
 ## Environment
-model: Raspberry Pi 3 Model B V1.2
-PyTorch version: N/A
-Is debug build: N/A
-CUDA used to build PyTorch: N/A
-OS: Raspbian GNU/Linux 10 (buster)
-GCC version: (Raspbian 8.3.0-6+rpi1) 8.3.0
-CMake version: version 3.13.4
-Python version: 3.7
-Is CUDA available: N/A
-CUDA runtime version: Could not collect
-GPU models and configuration: Could not collect
-Nvidia driver version: Could not collect
-cuDNN version: Could not collect
-Versions of relevant libraries:
-[pip3] numpy==1.16.2
-[conda] Could not collect
+* model: Raspberry Pi 3 Model B V1.2
+* PyTorch version: N/A
+* Is debug build: N/A
+* CUDA used to build PyTorch: N/A
+* OS: Raspbian GNU/Linux 10 (buster)
+* GCC version: (Raspbian 8.3.0-6+rpi1) 8.3.0
+* CMake version: version 3.13.4
+* Python version: 3.7
+* Is CUDA available: N/A
+* CUDA runtime version: Could not collect
+* GPU models and configuration: Could not collect
+* Nvidia driver version: Could not collect
+* cuDNN version: Could not collect
+* Versions of relevant libraries:
+* [pip3] numpy==1.16.2
+* [conda] Could not collect
 
 ## progress
 
@@ -75,12 +75,16 @@ If you build pytorch without this progress
 undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build/lib/libcaffe2.so: undefined reference to __atomic_load_8'
 ```
 this error will evoke.
+
 So, you need to follow this step
 ```
 sudo apt-get install libatomics-ops-dev
-Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
+Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). 
+i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
 ```
-But that is not enough. When you run pytorch code after installing, you might meet undefined reference to `__atomic_fetch_add_8' when it tries to backward. 
+But that is not enough. When you run pytorch code after installing, 
+you might meet undefined reference to `__atomic_fetch_add_8' when it tries to backward. 
+
 So, we also need to do this process before building. 
 ```
 cd pytorch
