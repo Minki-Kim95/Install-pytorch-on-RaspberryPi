@@ -1,4 +1,4 @@
-# Progress of install Pytorch on Raspberry Pie
+# Progress of install Pytorch V1.0.0 on Raspberry Pie
 This description is upgrade version of [this manual](https://blog.openmined.org/federated-learning-of-a-rnn-on-raspberry-pis/)
 
 ## git issue what We upload on pytorch repository
