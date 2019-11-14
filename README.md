@@ -158,8 +158,6 @@ Whenever I meet SSL error, I used this command and it works almost for ‘pip in
 
 * [Build Caffe2](https://caffe2.ai/docs/getting-started.html?platform=raspbian&configuration=compile)
 * how to resolve error message
-undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build/lib/libcaffe2.so: undefined reference to __atomic_load_8'
-[Issues in pytorch repository](https://github.com/pytorch/pytorch/issues/22898)
+undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build/lib/libcaffe2.so: undefined reference to __atomic_load_8' -> [Issues in pytorch repository](https://github.com/pytorch/pytorch/issues/22898)
 
-* how to resolve ‘undefined reference to `__atomic_fetch_add_8' after install
-[Issues in pytorch repository](https://github.com/pytorch/pytorch/issues/22564)
+* how to resolve ‘undefined reference to `__atomic_fetch_add_8' after install -> [Issues in pytorch repository](https://github.com/pytorch/pytorch/issues/22564)
