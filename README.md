@@ -124,7 +124,7 @@ So you need to build caffe2 before build pytorch.
 ```
 cd pytorch
 
-sudo git submodule update –-init
+git submodule update –-init
 
 sudo apt-get install python-yaml
 
