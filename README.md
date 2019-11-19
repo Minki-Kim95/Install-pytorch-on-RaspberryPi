@@ -123,7 +123,7 @@ So you need to build caffe2 before build pytorch.
 
 ```
 cd pytorch
-sudo git submodule update –init
+sudo git submodule update –-init
 sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/build_raspbian.sh
 -> It takes 3 hours in my case
 ```
