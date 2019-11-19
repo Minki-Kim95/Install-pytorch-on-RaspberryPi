@@ -104,7 +104,7 @@ you might meet error (undefined reference to `__atomic_fetch_add_8') when it tri
 So, we also need to do this process before building. 
 ```
 cd pytorch
-git submodule update –remote third party/protobuf
+git submodule update --remote third_party/protobuf
 ```
 
 ### 5.0 Set up environment variables for compiling Pytorch: 
