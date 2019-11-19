@@ -124,7 +124,11 @@ So you need to build caffe2 before build pytorch.
 ```
 cd pytorch
 sudo git submodule update –-init
-sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/build_raspbian.sh
+sudo apt-get install python-yaml
+sudo pip install typing
+USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/build_raspbian.sh
+(If you need to use 'sudo' then)
+>> sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/build_raspbian.sh
 -> It takes 3 hours in my case
 ```
 
@@ -132,6 +136,8 @@ sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/bu
 Now start building and cross your fingers, hoping no errors arise. This process may be quite lengthy: in my case, I let it run overnight and manually installed a few missing packages that could not be automatically downloaded and compiled by the pytorch installer.
 
 ```
+USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py build
+(If you need to use 'sudo' then)
 sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py build
 (-> ‘BUILD_TEST=0’ makes building more faster) 
 -> It takes about 1day in my case
@@ -146,6 +152,8 @@ If the compilation process stops halfway because of an error, your progresses is
 The installation should be much quicker than the compilation process (it took about 5 minutes on my Raspberry PI). To install Pytorch, just run:
 
 ```
+USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
+(If you need to use 'sudo' then)
 sudo -E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
 ```
 
