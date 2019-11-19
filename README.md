@@ -30,8 +30,8 @@ pip3 install --upgrade pip
 ```
 After upgrade, you must reboot raspberry
 ```
-check version
->> pip3 -V
+(check version)
+pip3 -V
 ```
 Also, when you try apt update or apt-get update you need to set raspberry pi's time correctly
 ```
@@ -79,7 +79,7 @@ At the time of writing, Pytorch was not available from the official Python "pip"
 ```
 mkdir pytorch_install && cd pytorch_install
 git clone --recursive https://github.com/pytorch/pytorch --branch=v1.0.1
-(-> in my case I need to add sudo
+(-> in my case I need to add sudo)
 sudo git clone --recursive https://github.com/pytorch/pytorch --branch=v1.0.1)
 cd pytorch
 ```
