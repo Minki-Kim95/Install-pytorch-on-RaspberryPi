@@ -25,6 +25,21 @@ https://github.com/pytorch/pytorch/issues/26455
 ## progress
 
 ### 0. Update pip3.
+```
+pip3 install --upgrade pip
+```
+After upgrade, you must reboot raspberry
+```
+check version
+>> pip3 -V
+```
+Also, when you try apt update or apt-get update you need to set raspberry pi's time correctly
+```
+ex)
+sudo date -s '9 Jul 2019 22:44'
+sudo apt-get update
+```
+
 ### 1. Create a SWAP file of 2 GBs. 
 This will be necessary during the upcoming installation process of PyTorch, is it is rather memory-hungry. If you do not create a SWAP, you are likely going to run out of memory during the installation process - as it happened to me. Ensure you have sufficient available secondary memory on your Rasbperry's SD card with df -h before running the following commands:
 
