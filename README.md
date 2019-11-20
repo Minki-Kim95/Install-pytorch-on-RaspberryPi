@@ -93,16 +93,6 @@ this error will evoke.
 
 So, you need to follow this step
 ```
-sudo apt-get install libatomics-ops-dev
-Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). 
-i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
-```
-But that is not enough. 
-When you run pytorch code after installing, 
-you might meet error (undefined reference to `__atomic_fetch_add_8') when it tries to backward
-
-So, we also need to do this process before building. 
-```
 cd pytorch
 git submodule update --remote third_party/protobuf
 ```
@@ -132,7 +122,7 @@ sudo pip install typing
 
 USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/build_raspbian.sh
 
-(If you need to use 'sudo' then)
+(If there is permission error, then)
 sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/build_raspbian.sh
 
 -> building takes 3 hours in my case
@@ -144,7 +134,7 @@ Now start building and cross your fingers, hoping no errors arise. This process 
 ```
 USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py build
 
-(If you need to use 'sudo' then)
+(If there is permission error, then)
 sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py build
 (-> ‘BUILD_TEST=0’ makes building more faster) 
 
@@ -162,7 +152,7 @@ The installation should be much quicker than the compilation process (it took ab
 ```
 USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
 
-(If you need to use 'sudo' then)
+(If there is permission error, then)
 sudo -E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
 ```
 
