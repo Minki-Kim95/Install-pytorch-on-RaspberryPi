@@ -90,9 +90,10 @@ If you build pytorch without this progress
 undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build/lib/libcaffe2.so: undefined reference to __atomic_load_8'
 ```
 this error will evoke.
-
-So, you need to follow this step
 ```
+sudo apt-get install libatomics-ops-dev
+Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
+
 cd pytorch
 git submodule update --remote third_party/protobuf
 ```
