@@ -91,7 +91,7 @@ undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build
 ```
 this error will evoke.
 ```
-sudo apt-get install libatomics-ops-dev
+sudo apt-get install libatomic-ops-dev
 Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
 
 cd pytorch
