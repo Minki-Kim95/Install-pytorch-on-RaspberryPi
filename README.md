@@ -133,7 +133,7 @@ i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
 cd pytorch
 git submodule update --remote third_party/protobuf
 ```
-
+Warning: don't try this progress before building caffe2
 ### 6 Compile Pytorch: 
 Now start building and cross your fingers, hoping no errors arise. This process may be quite lengthy: in my case, I let it run overnight and manually installed a few missing packages that could not be automatically downloaded and compiled by the pytorch installer.
 
@@ -144,7 +144,7 @@ USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 s
 sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py build
 (-> ‘BUILD_TEST=0’ makes building more faster) 
 
--> This building takes about 1day in my case
+-> This building takes about 6 hours in my case
 ```
 
 TROUBLESHOOTING: If you encounter the following error:
