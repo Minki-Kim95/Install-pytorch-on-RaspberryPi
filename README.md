@@ -84,22 +84,7 @@ sudo git clone --recursive https://github.com/pytorch/pytorch --branch=v1.0.1)
 cd pytorch
 ```
 
-### 4. How to resolve __atomic_xxx_8 error: 
-If you build pytorch without this progress 
-```
-undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build/lib/libcaffe2.so: undefined reference to __atomic_load_8'
-```
-this error will evoke.
-```
-sudo apt-get install libatomic-ops-dev
-sudo apt-get update
-Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
-
-cd pytorch
-git submodule update --remote third_party/protobuf
-```
-
-### 5.0 Set up environment variables for compiling Pytorch: 
+### 4.0 Set up environment variables for compiling Pytorch: 
 Let's run these last few commands in a shell before starting the compilation process, or add the environment variables to the. bashrc file in your home directory. Bear in mind we will need these variables just for the Pytorch's installation process. The NO_CUDA flag will make sure that the compiler doesn’t look for cuda files, as the Raspberry PI is not equipped with a GPU by default.
 ```
 export NO_CUDA=1
@@ -108,7 +93,7 @@ export NO_MKLDNN=1
 export NO_NNPACK=1
 export NO_QNNPACK=1
 ```
-### 5.1 Build caffe2: 
+### 4.1 Build caffe2: 
 If you build pytorch without building caffe2 
 there will be Failed to run 'bash tools/build_pytorch_libs.sh caffe2'
 So you need to build caffe2 before build pytorch.
@@ -130,7 +115,26 @@ sudo –E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/bu
 -> building takes 3 hours in my case
 ```
 
-### 5.2 Compile Pytorch: 
+### 5. How to resolve __atomic_xxx_8 error: 
+
+If you build pytorch without this progress 
+```
+undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build/lib/libcaffe2.so: undefined reference to __atomic_load_8'
+```
+this error will evoke.
+
+So you need to do this
+```
+sudo apt-get install libatomic-ops-dev
+sudo apt-get update
+Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). 
+i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
+
+cd pytorch
+git submodule update --remote third_party/protobuf
+```
+
+### 6 Compile Pytorch: 
 Now start building and cross your fingers, hoping no errors arise. This process may be quite lengthy: in my case, I let it run overnight and manually installed a few missing packages that could not be automatically downloaded and compiled by the pytorch installer.
 
 ```
@@ -148,7 +152,7 @@ Failed to run 'bash tools/build_pytorch_libs.sh --use-cuda --use-nnpack --use mk
 Then that means you haven’t set the environment variables properly. Set the environment variables correctly, then retry.
 If the compilation process stops halfway because of an error, your progresses is not lost! It will resume compiling at the point where it stopped.
 
-### 6. Install Pytorch: 
+### 7. Install Pytorch: 
 The installation should be much quicker than the compilation process (it took about 5 minutes on my Raspberry PI). To install Pytorch, just run:
 
 ```
