@@ -123,7 +123,7 @@ undefined reference to __atomic_fetch_add_8' /usr/bin/ld: /home/pi/pytorch/build
 ```
 this error will evoke.
 
-So you need to do this
+So you need to do this before compile
 ```
 sudo apt-get install libatomic-ops-dev
 sudo apt-get update
