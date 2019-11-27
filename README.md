@@ -1,4 +1,4 @@
-# Progress of install Pytorch V1.0.0 on Raspberry Pie(last edit: 22/Nov/2019)
+# Progress of install Pytorch V1.0.0 on Raspberry Pie (last edit: 22/Nov/2019)
 This description is upgrade version of [this manual](https://blog.openmined.org/federated-learning-of-a-rnn-on-raspberry-pis/)
 
 ## git issue what We upload on pytorch repository
@@ -138,6 +138,12 @@ Warning: don't try this progress before building caffe2
 Now start building and cross your fingers, hoping no errors arise. This process may be quite lengthy: in my case, I let it run overnight and manually installed a few missing packages that could not be automatically downloaded and compiled by the pytorch installer.
 
 ```
+export NO_CUDA=1
+export NO_DISTRIBUTED=1
+export NO_MKLDNN=1 
+export NO_NNPACK=1
+export NO_QNNPACK=1
+
 USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py build
 
 (If there is permission error, then)
@@ -158,9 +164,11 @@ The installation should be much quicker than the compilation process (it took ab
 ```
 USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
 
-(If there is permission error, then)
+(If there is permission error, then.)
 sudo -E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
 ```
+In my case, permission error was evoked in intall process 
+
 
 If the installation completed successfully, let’s try importing Pytorch in python3. Do not run the following commands while you’re in Pytorch's installation directory, as that’s likely to yield import errors. To test your installation:
 
