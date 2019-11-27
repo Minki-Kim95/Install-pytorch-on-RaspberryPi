@@ -103,9 +103,9 @@ cd pytorch
 
 git submodule update –-init
 
-sudo apt-get install python-yaml
+sudo apt-get install python-yaml (In my case, using 'sudo apt-get install python3-yaml' command is not worked for caffe2 build)
 
-sudo pip install typing
+sudo pip install typing (In my case, using 'sudo pip3 install typing' command is not worked for caffe2 build)
 
 USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 ./scripts/build_raspbian.sh
 
