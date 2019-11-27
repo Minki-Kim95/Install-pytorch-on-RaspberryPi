@@ -182,7 +182,7 @@ print(torch.__version__)
 ## Another comments
 *	You can change the version of python but that makes pip error easier. So changing python version is not recommended (because of that, I reinstall OS about 4 times...)
 *	If you need to use downgraded python version (like 3.5) you can use old version raspbian here (http://downloads.raspberrypi.org/raspbian/images/) but I recommend recent version
-*	Using sudo drop or only keep some current environment variables. If you can, using sudo is not recommended. But if you must need to use ‘sudo’, you can try sudo –E to force sudo to preserve environment variables
+*	Using sudo can't preserve current environment variables. If you can, using sudo is not recommended. But if you must need to use ‘sudo’, you can use 'sudo –E' command for forcing sudo to preserve environment variables
 *	If you need to install v1.1.0, you can follow this tutorial
 https://nmilosev.svbtle.com/compling-arm-stuff-without-an-arm-board-build-pytorch-for-the-raspberry-pi
 *	Sometimes when you use pip install command, SSL error can be evoked. you can resolve this problem with making sites which pip use trusted site by adding --trusted-host ‘site url’
