@@ -128,7 +128,7 @@ So you need to do this progress before compile
 sudo apt-get install libatomic-ops-dev
 sudo apt-get update
 Change CMAKE_CXX_FLAGS variable in CMakeLists.txt file (in the main directory). 
-i.e. add line set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
+i.e. add line `set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")` on the last line 
 
 cd pytorch
 git submodule update --remote third_party/protobuf
@@ -162,10 +162,8 @@ If the compilation process stops halfway because of an error, your progresses is
 The installation should be much quicker than the compilation process (it took about 5 minutes on my Raspberry PI). To install Pytorch, just run:
 
 ```
-USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
-
-(If there is permission error, then.)
 sudo -E USE_MKLDNN=0 USE_QNNPACK=0 USE_NNPACK=0 USE_DISTRIBUTED=0 BUILD_TEST=0 python3 setup.py install
+(If you don't use sudo here, there will be permission error because of caffe2)
 ```
 In my case, permission error was evoked in intall process 
 
